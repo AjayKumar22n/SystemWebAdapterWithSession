@@ -64,8 +64,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseSystemWebAdapters();
-//app.MapBlazorHub();
-app.MapBlazorHub().RequireSystemWebAdapterSession();
+app.MapBlazorHub();
+//app.MapBlazorHub().RequireSystemWebAdapterSession();
 app.MapRazorPages();//.RequireSystemWebAdapterSession();
 app.MapBlazorPages("/_Host");
 app.MapReverseProxy();
