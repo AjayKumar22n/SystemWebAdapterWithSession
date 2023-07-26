@@ -1,0 +1,33 @@
+﻿@page "/"
+@page "/home"
+@using Microsoft.JSInterop;
+@inject NavigationManager NavManager
+@inject IJSRuntime _jsRunTime
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await JS.InvokeVoidAsync("import", "https://kit.fontawesome.com/ab1e28a851.js");
+        
+        // NavManager.NavigateTo("/about.aspx");
+        //await _jsRunTime.InvokeAsync<IJSObjectReference>("import", "./blazor.server.js");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+       // if (firstRender)
+       // {
+           // await _jsRunTime.InvokeAsync<IJSObjectReference>("import", "./blazor.server.js");
+       // }
+    }
+
+}

@@ -1,0 +1,40 @@
+﻿@page "/ls"
+
+@inject ProtectedLocalStorage BrowserStorage
+@inject Blazored.LocalStorage.ILocalStorageService _localstorage;
+
+<h1>Local Storage!</h1>
+
+<input class="form-control" @bind="currentInputValue" />
+<button class="btn btn-secondary" @onclick="Save">Save</button>
+<button class="btn btn-secondary" @onclick="Read">Read</button>
+<button class="btn btn-secondary" @onclick="Delete">Delete</button>
+
+@code {
+    string currentInputValue;
+
+    public async Task Save()
+    {
+        await _localstorage.SetItemAsStringAsync("name", currentInputValue);
+       // await BrowserStorage.SetAsync("name", currentInputValue);
+    }
+
+    public async Task Read()
+    {
+        //var result = await BrowserStorage.GetAsync<string>("name");
+        //currentInputValue = result.Success ? result.Value : "";
+
+       var sss = await _localstorage.GetItemAsStringAsync("name");
+
+        var x = await _localstorage.GetItemAsStringAsync("CustName");
+
+        var p = "";
+    }
+
+    public async Task Delete()
+    {
+        //await BrowserStorage.DeleteAsync("name");
+
+        await _localstorage.RemoveItemAsync("name");
+    }
+}
