@@ -48,10 +48,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-       // NavManager.NavigateTo("/home", true);
-
-       // System.Web.HttpContext.Current.Session["coresession"] = "I am core";
-        //frameworksession = System.Web.HttpContext.Current.Session["frameworksession"] != null ? System.Web.HttpContext.Current.Session["frameworksession"].ToString() : "not exist";
+        System.Web.HttpContext.Current.Session["coresession"] = "I am core";
+        frameworksession = System.Web.HttpContext.Current.Session["frameworksession"] != null ? System.Web.HttpContext.Current.Session["frameworksession"].ToString() : "not exist";
         forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
     }
 

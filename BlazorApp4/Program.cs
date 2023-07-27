@@ -8,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSystemWebAdapters();
 builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
-builder.Services.AddTelerikBlazor();
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();//.AddHubOptions(a => { a.})
@@ -64,10 +63,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseSystemWebAdapters();
-//app.MapBlazorHub();
-app.MapBlazorHub().RequireSystemWebAdapterSession();
-app.MapRazorPages();//.RequireSystemWebAdapterSession();
-app.MapBlazorPages("/_Host");
+app.MapBlazorHub();
+//app.MapBlazorHub().RequireSystemWebAdapterSession();
+app.MapRazorPages().RequireSystemWebAdapterSession();
+app.MapBlazorPages("/_Host").RequireSystemWebAdapterSession();
 app.MapReverseProxy();
 
 app.Run();
